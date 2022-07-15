@@ -39,3 +39,11 @@ Install -> pypi.org -> PIP (Python Package Installer)
 # from datetime import datetime
 
 # print(datetime.now())
+
+import wikipedia
+wikipedia.set_lang('hi')
+print(wikipedia.summary('India'))
+
+# p=wikipedia.page('List of chief ministers of Punjab (India)')
+# print(p)
+# print(p.url)
