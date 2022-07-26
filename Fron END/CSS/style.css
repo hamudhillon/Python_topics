@@ -1,0 +1,48 @@
+h2 {
+    background-color: aquamarine;
+    color: rgba(243, 183, 5, 0.859);
+    background-image: url(../MEDIA/a.jpg);
+    height: 500px;
+    width: 50%;
+    background-size: cover;
+    background-position: 0 0px;
+    background-repeat: no-repeat;
+    font-size: 40px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    width: 80%;
+    border-radius: 10px;
+    background-color: aqua;
+    /* text-align: justify; */
+    /* text-decoration: underline; */
+    /* text-transform: capitalize; */
+}
+
+div {
+    width: 200px;
+    height: 200px;
+    background: red;
+    border-radius: 50%;
+}
+
+#myh2 {
+    color: brown;
+}
+
+.myh2class {
+    color: violet;
+}
+
+
+/* 
+FLEX BOX
+GRID
+
+*/
