@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    width: 200px;
+    height: 200px;
+    background-color: aquamarine;
+    top: 0px;
+    left: 200px;
+    /* bottom: 0; */
+}
+
+.b {
+    z-index: -1;
+    position: sticky;
+    background-color: rgba(102, 51, 153, 0.286);
+}

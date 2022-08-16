@@ -1,0 +1,44 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div ng-app="app" ng-init="color='red'" ng-controller="myCtrl">
+        <input type="text" ng-model="name" style="background-color: {{color}};" />
+        <select name="" ng-model="sel" id="">
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+      </select>
+        <p ng-bind="name +' '+ Age"></p>
+        <p ng-bind="sel"></p>
+        <p>{{dataArray[1]}}</p>
+        <ul>
+            <li ng-repeat="x in data">{{x}}</li>
+        </ul>
+        <p>{{ data.fname +' '+ data.lname }}</p>
+        <p ng-model="color" style="color:{{color}}">{{name +" "+Age}}</p>
+    </div>
+
+    <script>
+        var app = angular.module("app", []);
+
+        app.controller("myCtrl", function($scope) {
+            $scope.dataArray = [1, 4, 6];
+            $scope.data = {
+                fname: "Scoby",
+                lname: "Doo",
+            };
+            $scope.Age = 77;
+            $scope.Phone = 3456789;
+        });
+    </script>
+</body>
+
+</html>
