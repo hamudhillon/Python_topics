@@ -6,11 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.min.js" integrity="sha512-KZmyTq3PLx9EZl0RHShHQuXtrvdJ+m35tuOiwlcZfs/rE7NZv29ygNA8SFCkMXTnYZQK2OX0Gm2qKGfvWEtRXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+        input.ng-invalid {
+            background-color: aquamarine;
+        }
+        
+        input.ng-valid {
+            background-color: rgb(230, 0, 255);
+        }
+        
+        input.ng-empty {
+            background-color: red;
+        }
+    </style>
 </head>
 
 <body>
     <div ng-app="app" ng-init="color='red'" ng-controller="myCtrl">
-        <input type="text" ng-model="name" style="background-color: {{color}};" />
+        <!-- <input type="text" ng-model="name" style="background-color: {{color}};" />
         <select name="" ng-model="sel" id="">
         <option value="a">a</option>
         <option value="b">b</option>
@@ -23,17 +36,68 @@
             <li ng-repeat="x in data">{{x}}</li>
         </ul>
         <p>{{ data.fname +' '+ data.lname }}</p>
-        <p ng-model="color" style="color:{{color}}">{{name +" "+Age}}</p>
+        <p ng-model="color" style="color:{{color}}">{{name +" "+Age}}</p> -->
+        <!-- <div random class="{{random}}"></div> -->
+        <form name="myform">
+            <input type="email" ng-model="mail" name="name" required />
+            <!-- <span ng-show="myform.email.$error.email" >Not a Valid Email</span
+        > -->
+            <br />{{myform.name.$vaild}}<br /> {{myform.name.$dirty}} <br />{{myform.name.$touched}}
+        </form>
+        <h1>{{data.fname |lowercase}}</h1>
+        <h1>{{Age | currency}}</h1>
+
+        <input type="text" ng-model="nameF" />
+        <ul>
+            <li ng-repeat="x in dataArray|filter:nameF">{{x}}</li>
+        </ul>
+
+        <table>
+            <tr>
+                <th ng-click="orderByMe('Name')">Name</th>
+                <th ng-click="orderByMe('Country')">Country</th>
+            </tr>
+            <tr ng-repeat="x in data1| orderBy:oderTable">
+                <td>{{x.Name}}</td>
+                <td>{{x.Country}}</td>
+            </tr>
+        </table>
     </div>
 
     <script>
         var app = angular.module("app", []);
-
+        app.directive("random", function() {
+            return {
+                restrict: "A",
+                template: "This is a random Directive",
+            };
+            // E
+            // C
+            // M
+            // A
+        });
         app.controller("myCtrl", function($scope) {
-            $scope.dataArray = [1, 4, 6];
+            $scope.dataArray = ["random", "ram", "sham", "sita"];
             $scope.data = {
                 fname: "Scoby",
                 lname: "Doo",
+            };
+            $scope.data1 = [{
+                Name: "Random",
+                Country: "india",
+            }, {
+                Name: "Ram",
+                Country: "india",
+            }, {
+                Name: "Ron",
+                Country: "Uk",
+            }, {
+                Name: "Tom",
+                Country: "USA",
+            }, ];
+
+            $scope.orderByMe = function(x) {
+                $scope.oderTable = x;
             };
             $scope.Age = 77;
             $scope.Phone = 3456789;
