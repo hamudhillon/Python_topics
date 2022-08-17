@@ -3,7 +3,6 @@ from .views import *
 
 
 urlpatterns = [
-    path('index',index,name='index'),
-    path('add',add,name='sum')
-
+    path('index/image/<slug:url>',index,name='index'),
+    path('add/<int:n1>/<int:n2>',add,name='sum')
 ]
