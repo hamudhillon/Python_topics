@@ -38,11 +38,11 @@
         <p>{{ data.fname +' '+ data.lname }}</p>
         <p ng-model="color" style="color:{{color}}">{{name +" "+Age}}</p> -->
         <!-- <div random class="{{random}}"></div> -->
-        <form name="myform">
-            <input type="email" ng-model="mail" name="name" required />
-            <!-- <span ng-show="myform.email.$error.email" >Not a Valid Email</span
+        <!-- <form name="myform">
+            <input type="email" ng-model="mail" name="name" required /> -->
+        <!-- <span ng-show="myform.email.$error.email" >Not a Valid Email</span
         > -->
-            <br />{{myform.name.$vaild}}<br /> {{myform.name.$dirty}} <br />{{myform.name.$touched}}
+        <!-- <br />{{myform.name.$vaild}}<br /> {{myform.name.$dirty}} <br />{{myform.name.$touched}}
         </form>
         <h1>{{data.fname |lowercase}}</h1>
         <h1>{{Age | currency}}</h1>
@@ -61,11 +61,40 @@
                 <td>{{x.Name}}</td>
                 <td>{{x.Country}}</td>
             </tr>
-        </table>
+        </table> -->
+
+        <h1><i>{{fact}}</i></h1>
+
+        <a href="{{myurl}}">{{myurl}}</a>
+
+        <div>
+            <img src="{{thumb}}" width="400" alt="" />
+            <h1>{{title}}</h1>
+            <p>{{desc}}</p>
+        </div>
+
+        <h1>{{myvar | myf}}</h1>
+
+        <h2>{{t | myf}}</h2>
+        <h2>{{st}}</h2>
     </div>
 
     <script>
         var app = angular.module("app", []);
+        app.service("upp", function() {
+            this.func = function(x) {
+                return x + " World";
+            };
+        });
+
+        app.filter("myf", [
+            "upp",
+            function(upp) {
+                return function(x) {
+                    return upp.func(x);
+                };
+            },
+        ]);
         app.directive("random", function() {
             return {
                 restrict: "A",
@@ -76,32 +105,63 @@
             // M
             // A
         });
-        app.controller("myCtrl", function($scope) {
-            $scope.dataArray = ["random", "ram", "sham", "sita"];
-            $scope.data = {
-                fname: "Scoby",
-                lname: "Doo",
-            };
-            $scope.data1 = [{
-                Name: "Random",
-                Country: "india",
-            }, {
-                Name: "Ram",
-                Country: "india",
-            }, {
-                Name: "Ron",
-                Country: "Uk",
-            }, {
-                Name: "Tom",
-                Country: "USA",
-            }, ];
 
-            $scope.orderByMe = function(x) {
-                $scope.oderTable = x;
-            };
-            $scope.Age = 77;
-            $scope.Phone = 3456789;
-        });
+        app.controller(
+            "myCtrl",
+            function($scope, $location, $http, $timeout, $interval, upp) {
+                $scope.t = new Date().toLocaleTimeString();
+                $scope.st = upp.func("sahdjkshdjkashj");
+                $interval(function() {
+                    $scope.t = new Date().toLocaleTimeString();
+                }, 1000);
+
+                $scope.myvar = "Hello world";
+
+                $timeout(function() {
+                    $scope.myvar = "Rocking !!";
+                }, 2000);
+
+                $interval(function() {
+                    $http.get("https://catfact.ninja/fact").then(function(response) {
+                        $scope.fact = response.data.fact;
+                    });
+                }, 2000);
+
+                $http
+                    .get("https://hamudhillon.pythonanywhere.com/anime/all")
+                    .then(function(response) {
+                        $scope.title = response.data[0].Title;
+                        $scope.thumb = response.data[0].ani_thumb;
+                        $scope.desc = response.data[0].ani_desc;
+                        console.log(response.data);
+                    });
+                $scope.myurl = $location.absUrl();
+                $scope.dataArray = ["random", "ram", "sham", "sita"];
+                $scope.data = {
+                    fname: "Scoby",
+                    lname: "Doo",
+                };
+                $scope.data1 = [{
+                    Name: "Random",
+                    Country: "india",
+                }, {
+                    Name: "Ram",
+                    Country: "india",
+                }, {
+                    Name: "Ron",
+                    Country: "Uk",
+                }, {
+                    Name: "Tom",
+                    Country: "USA",
+                }, ];
+
+                $scope.orderByMe = function(x) {
+                    $scope.oderTable = x;
+                };
+                $scope.Age = 77;
+                $scope.Phone = 3456789;
+            }
+        );
     </script>
 </body>
 

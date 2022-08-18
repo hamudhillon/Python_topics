@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <title>Title</title>
+</head>
+
+<body>
+    <h1>Name Api</h1>
+    <input type="text" name="names" id="" />
+    <div class="result">
+        <h1></h1>
+        <i></i>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("input").on("keyup", function() {
+                var name = $(this).val();
+                if (name.length > 3) {
+                    $.ajax({
+                        url: "https://api.nationalize.io/?name=" + name,
+                        type: "GET",
+                        success: function(data) {
+                            d = data.country;
+                            for (var i = 0; i < d.length; i++) {
+                                $(".result").append(
+                                    "<tr><td><b>" +
+                                    d[i].country_id +
+                                    "</b></td><td><i>" +
+                                    d[i].probability +
+                                    "</i></td></tr>"
+                                );
+                            }
+                        },
+                    });
+                } else {
+                    $(".result").html("");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
