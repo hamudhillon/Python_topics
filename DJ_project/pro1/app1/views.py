@@ -58,3 +58,11 @@ def index(request,url):
     return render(request,'index.html',context)
 def add(request,n1,n2):
     return HttpResponse(f'<h2>{n1+n2}</h2>')
+
+def about(request):
+    
+    return render(request,'about.html',{})
+
+def create(request):
+    
+    return render(request,'Createpost.html',{})
