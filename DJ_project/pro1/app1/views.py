@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import blogpost
+
 # Create your views here.
 
 
@@ -65,4 +67,27 @@ def about(request):
 
 def create(request):
     
+    if request.method=='POST':
+        title=request.POST['title']
+        desc=request.POST['desc']
+        image=request.FILES['image']
+        cat=request.POST['cat']
+        postby=request.POST['postBy']
+        print(title,desc,image,cat,postby)
+
+        ob=blogpost()
+        ob.title=title
+        ob.desc=desc
+        ob.image=image
+        ob.post_by=postby
+        ob.category=cat
+        ob.save()
+
     return render(request,'Createpost.html',{})
+
+
+def allpost(request):
+    # ob=blogpost.objects.get(id=2) #for one row
+    ob=blogpost.objects.all() #for all rows
+
+    return render(request,'allpost.html',{'data':ob})

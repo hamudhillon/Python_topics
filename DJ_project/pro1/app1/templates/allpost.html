@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block content %}
+
+<h1>ALL Post</h1>
+
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap">
+  {% for i in data %}
+
+  <div class="card">
+    <img src="{{i.image.url}}" width="300" />
+    <h1>{{i.title}}</h1>
+    <p>{{i.desc}}</p>
+    <span>{{i.post_by}}</span>
+    <h6>{{i.created_at}}</h6>
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endblock content %}

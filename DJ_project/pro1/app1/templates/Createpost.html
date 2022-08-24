@@ -2,8 +2,17 @@
 
 <h1>Create a Post</h1>
 
-<form>
+<form action="?" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
   <input type="text" name="title" placeholder="Enter your Title " />
+  <textarea name="desc" placeholder="Description about blog"></textarea>
+  <input type="file" name="image" />
+  <input type="text" name="postBy" placeholder="POST BY " />
+  <select name="cat">
+    <option value="TECH">TECH</option>
+    <option value="Politics">Politics</option>
+    <option value="Sports">Sports</option>
+  </select>
 
   <button>Create</button>
 </form>
