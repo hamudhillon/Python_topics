@@ -1,26 +1,51 @@
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>First page</title>
     <style>
-        .headingClass {
-            width: 500px;
+        body {
+            background-color: aqua;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-image: url("./MEDIA/a.jpg");
+            /* background-position: 100px 200px; */
+        }
+        
+        #heading1 {
+            color: wheat;
+            font-size: 45px;
+            background-color: red;
+        }
+        
+        h1 {
+            width: 400px;
             height: 200px;
-            color: red;
-            background-color: violet;
-            font-size: 80px;
+            color: wheat;
+            font-size: 45px;
+            background-color: red;
+            display: inline-block;
+        }
+        
+        .head {
+            color: wheat;
+            font-size: 45px;
+            font-weight: 900;
             text-align: center;
+            background-color: rgba(255, 100, 100, 0.7);
+        }
+        
+        .box {
+            font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
         }
     </style>
 </head>
 
 <body>
-    <h1 id="heading1" class="headingClass">Heading 1</h1>
-    <h1 class="headingClass">Heading 2</h1>
-    <h1>Heading 3</h1>
+    <h1 class="head box" id="heading1">Heading 1</h1>
+    <h1 class="head">Heading 2</h1>
+    <p class="head">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum rerum suscipit aut facere minima ducimus, deleniti, repellat velit placeat laudantium facilis, tenetur veritatis. Ratione quidem doloremque voluptatum. Numquam, provident eum.
+    </p>
 </body>
 
 </html>
