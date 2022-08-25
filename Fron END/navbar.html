@@ -1,0 +1,78 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <style>
+        * {
+            margin: 0px;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            --font_color: white;
+            box-sizing: border-box;
+        }
+        
+        header {
+            width: 100%;
+            height: 15vh;
+            background-color: #3d174f;
+            line-height: 15vh;
+            color: var(--font_color);
+            padding: 0 30px;
+        }
+        
+        a {
+            color: var(--font_color);
+            text-decoration: none;
+        }
+        
+        .logo {
+            width: 50%;
+            display: inline-block;
+        }
+        
+        .logo_items {
+            display: inline-block;
+            font-size: 30px;
+        }
+        
+        .logo img {
+            position: relative;
+            top: 10px;
+        }
+        
+        .nav,
+        li {
+            display: inline-block;
+            font-size: 15px;
+            text-transform: uppercase;
+            margin: 0 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img class="logo_items" src="./MEDIA/food-irradiation.png" alt="" width="50" height="50" />
+            <!-- <i></i> -->
+            <h1 class="logo_items">My NAV</h1>
+        </div>
+        <ul class="nav">
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Solutions</a></li>
+            <li><a href="#">Why nabvar</a></li>
+            <li><a href="#">Contact</a></li>
+            <li>
+                <a href="#">
+                    <i class="fa-solid fa-magnifying-glass"></i> Search Resource</a>
+            </li>
+        </ul>
+    </header>
+</body>
+
+</html>
